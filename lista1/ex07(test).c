@@ -3,10 +3,8 @@
 typedef struct s_list
 {
         char            *time;
-        int             vitoria;
-        int             derrota;
-        int             empate;
-        struct s_list   *next
+		int				soma;
+        struct s_list   *next;
 } 		t_list;
 
 int main(void)
