@@ -1,4 +1,4 @@
-#include <stdio.h>
+um#include <stdio.h>
 
 int main(void)
 {
@@ -16,7 +16,7 @@ int main(void)
     p = &b;
   else
     return (0);
-  p = p - 50;
+  *p = *p - 50;
   printf("%d", a);
   printf("%d", b);
   printf("%d", p);
