@@ -1,0 +1,1 @@
+prefiro a segunda abordagem pq nela eu altero a variavel direto, sem precisar criar uma nova estrutura dentro da função. O exercício 3 tem menos uso de memória já que ele não cria uma nova estrutura, apenas utiliza uma ja existente. Só não sei se é mais rapido
