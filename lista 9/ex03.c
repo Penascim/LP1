@@ -6,7 +6,7 @@ typedef struct s_Caixa {
     struct Caixa* prox;
 } Caixa;
 
-void imprimirLista(struct Caixa* cabeca) {
+void    exibe(struct Caixa* cabeca) {
     Caixa* p = cabeca;
     while (p != NULL) {
         printf("%d -> ", p->valor);
@@ -30,7 +30,7 @@ int main(void) {
     c2.prox = &c3;
     c1.prox = &c2;
 
-    imprimirLista(&c1);
+    exibe(&c1);
 
     return 0;
 }
