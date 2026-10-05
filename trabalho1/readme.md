@@ -77,3 +77,41 @@ o valor.
   data do pedido e mostra o total de cada mês e duas médias: a dos meses com
   compras e a do período inteiro, do primeiro ao último mês, contando também
   os meses sem compras.
+
+## Dados de exemplo (mock)
+
+Os arquivos `Cliente.dat` e `Pedidos.dat` de exemplo têm 6 clientes e 15
+pedidos (de junho a outubro de 2026). Sobram vagas para testar a inserção
+(4 clientes e 5 pedidos). Para usá-los, os dois arquivos precisam estar na
+pasta em que o programa é executado.
+
+| CNPJ               | Cliente                | Cidade/UF         | Pedidos          |
+|--------------------|------------------------|-------------------|------------------|
+| 23.456.789/0001-95 | Ferragens Sao Jorge    | Rio de Janeiro/RJ | 1, 3, 10, 15     |
+| 34.567.890/0001-30 | Padaria Pao Dourado    | Niteroi/RJ        | 5, 8, 13         |
+| 45.678.901/0001-75 | Mercado Bom Preco      | Sao Paulo/SP      | 2, 6, 12         |
+| 56.789.012/0001-00 | Papelaria Lapis de Cor | Belo Horizonte/MG | 4, 11            |
+| 67.890.123/0001-16 | Farmacia Vida Leve     | Curitiba/PR       | 9                |
+| 1A.2B3.C4D/0001-79 | Tech Solucoes Digitais | Salvador/BA       | 7, 14            |
+
+Situações cobertas:
+
+- pedidos entregues no prazo e com atraso (nº 3, 6 e 8);
+- pedidos em aberto no prazo (nº 12, 14 e 15) e fora do prazo (nº 11 e 13).
+  A situação depende da data do computador: os três "no prazo" continuam
+  assim até 30/11/2026;
+- pedido com os 6 itens preenchidos (nº 5) e as duas formas de pagamento;
+- clientes isentos de inscrição estadual, sem email, sem contato e com
+  CNPJ alfanumérico;
+- um cliente com um mês sem compras no meio do período (Ferragens: nenhum
+  pedido em agosto), para a consulta de média mensal.
+
+Os arquivos foram gerados pelo próprio programa a partir de `mock_entrada.txt`.
+Para recriá-los (por exemplo, para voltar aos dados originais depois dos testes,
+ou se o seu compilador organizar as structs de outro jeito e os dados
+aparecerem embaralhados), apague `Cliente.dat` e `Pedidos.dat` e execute:
+
+```
+./controle_clientes < mock_entrada.txt          (Linux)
+controle_clientes.exe < mock_entrada.txt        (Windows)
+```

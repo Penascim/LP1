@@ -1,3 +1,4 @@
 *.dat
+!dados_exemplo/*.dat
 controle_clientes
 controle_clientes.exe
