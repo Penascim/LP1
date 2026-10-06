@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 void puxarCarta(int *soma, int *ases) {
     char *nomes[14] = {"", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     int carta = rand() % 13 + 1;
 
     printf(" %s", nomes[carta]);
+
     if (carta == 1) {
         *soma += 11;
         (*ases)++;
@@ -23,18 +23,20 @@ void puxarCarta(int *soma, int *ases) {
 }
 
 int main(void) {
-    int cliente = 0, asesCliente = 0, banca = 0, asesBanca = 0;
+    int cliente = 0, asesCliente = 0, banca = 0, asesBanca = 0, semente;
     char resposta;
 
-    srand(time(NULL));
+    printf("digite um numero qualquer para embaralhar: ");
+    scanf("%d", &semente);
+    srand(semente);
 
-    printf("Suas cartas:");
+    printf("suas cartas:");
     puxarCarta(&cliente, &asesCliente);
     puxarCarta(&cliente, &asesCliente);
     printf("  (soma %d)\n", cliente);
 
     while (cliente < 21) {
-        printf("Deseja outra carta? (S/N): ");
+        printf("deseja outra carta? (S/N): ");
         scanf(" %c", &resposta);
         if (resposta != 'S' && resposta != 's')
             break;
@@ -44,17 +46,18 @@ int main(void) {
     }
 
     if (cliente > 21) {
-        printf("Voce passou de 21. A banca ganhou!\n");
+        printf("Voce estourou 21!\n");
         return 0;
     }
 
     printf("Cartas da banca:");
+    
     while (banca < cliente)
         puxarCarta(&banca, &asesBanca);
     printf("  (soma %d)\n", banca);
 
     if (banca > 21)
-        printf("A banca passou de 21. Voce ganhou!\n");
+        printf("a banca estourou 21!\n");
     else if (banca == cliente)
         printf("Empate!\n");
     else
